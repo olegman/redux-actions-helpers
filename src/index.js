@@ -1,6 +1,14 @@
 import { fork as sagaFork } from 'redux-saga/effects';
 
+const actionsRegistry = new Set();
+
 export function createAction(type, paramsCreator = () => null) {
+    if (actionsRegistry.has(type)) {
+        throw `Duplicate action ${type}`;
+    } else {
+        actionsRegistry.add(type);
+    }
+
     const actionCreator = (...args) => {
         return {
             ...paramsCreator(...args),
