@@ -6,7 +6,8 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/redux-actions-helpers.svg?style=flat-square)](https://www.npmjs.com/package/redux-actions-helpers)
 [![NPM Downloads](https://img.shields.io/npm/dt/redux-actions-helpers.svg?style=flat-square)](https://www.npmjs.com/package/redux-actions-helpers)
 
-This is tiny lib for reducing boilerplate when you create and handle new actions in your app.
+This is tiny lib for reducing boilerplate when you create and handle new actions in your app. With the help of this lib
+you can create action in one single line and use it to dispatch actions and like constant with one single function.
 
 Before:
 ``` 
@@ -26,7 +27,6 @@ export function actionWithParams(param1, param2) {
         param2
     }
 }
-
 
 // reducer.js
 import { ACTION_WITHOUT_PARAMS, ACTION_WITH_PARAMS } from 'actions.js';
@@ -61,8 +61,8 @@ import { createAction } from 'redux-actions-helpers';
 export const actionWithoutParams = createAction('ACTION_WITHOUT_PARAMS');
 export const actionWithParams = createAction('ACTION_WITH_PARAMS', (param1, param2) => ({ param1, param2 }));
 
-
 // reducer.js
+import { handleActions } from 'redux-actions-helpers';
 import { actionWithoutParams, actionWithParams } from 'actions.js';
 
 const initialState = {
