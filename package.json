@@ -1,7 +1,7 @@
 {
   "name": "redux-actions-helpers",
   "description": "Some helper functions for redux actions to reduce boilerplate",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": {
     "name": "Oleg Martynov",
     "email": "olegman.ru@gmail.com"
