@@ -22,6 +22,7 @@
     "transpile": "rm -rf lib && tsc -p ."
   },
   "dependencies": {
+    "redux": "3.x.x",
     "redux-saga": "0.11.x"
   },
   "devDependencies": {
