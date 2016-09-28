@@ -16,8 +16,7 @@
   "license": "MIT",
   "scripts": {
     "watch": "babel ./src/index.js -w -o ./index.js",
-    "transpile": "babel ./src/index.js -o ./index.js",
-    "minify": "uglifyjs ./index.js -o ./index.js -c -m"
+    "transpile": "babel ./src/index.js -o ./index.js"
   },
   "dependencies": {
     "redux-saga": "0.11.x"

@@ -9,7 +9,6 @@ cache:
 
 script:
   - npm run transpile
-  - npm run minify
 
 deploy:
   provider: npm
