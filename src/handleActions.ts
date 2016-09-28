@@ -12,9 +12,24 @@ export interface action {
     [propName: string]: any;
 }
 export default function handleActions(handlers: handlers, initialState: state) {
+    const flattenHandlers = (handlers => {
+        let result = {};
+        Object.keys(handlers).forEach(type => {
+            let types = type.split(',');
+            if (types.length > 1) {
+                types.forEach(disjoinedType => {
+                    result[disjoinedType] = handlers[type];
+                })
+            } else {
+                result[type] = handlers[type];
+            }
+        });
+        return result;
+    })(handlers);
+
     return (state = initialState, action: action) => {
-        if (handlers[action.type]) {
-            return handlers[action.type](state, action);
+        if (flattenHandlers[action.type]) {
+            return flattenHandlers[action.type](state, action);
         } else {
             return state;
         }
