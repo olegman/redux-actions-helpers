@@ -1,6 +1,6 @@
 {
   "name": "redux-actions-helpers",
-  "description": "Some helper functions for redux actions to reduce boilerplate",
+  "description": "Small helpers functions for creating and handle redux actions",
   "version": "0.0.3",
   "author": {
     "name": "Oleg Martynov",
@@ -14,18 +14,16 @@
     "url": "https://github.com/olegman/redux-actions-helpers.git"
   },
   "license": "MIT",
+  "main": "lib/index.js",
   "scripts": {
-    "watch": "babel ./src/index.js -w -o ./index.js",
-    "transpile": "babel ./src/index.js -o ./index.js"
+    "watch": "tsc -p . --watch",
+    "transpile": "tsc -p ."
   },
   "dependencies": {
     "redux-saga": "0.11.x"
   },
   "devDependencies": {
-    "babel-cli": "^6.14.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-latest": "^6.14.0",
-    "babel-preset-stage-2": "^6.13.0",
-    "uglify-js": "^2.7.3"
+    "typescript": "^2.0.3",
+    "typings": "^1.4.0"
   }
 }
