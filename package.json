@@ -17,6 +17,7 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
+    "postinstall": "typings install",
     "watch": "rm -rf lib && tsc -p . --watch",
     "transpile": "rm -rf lib && tsc -p ."
   },
