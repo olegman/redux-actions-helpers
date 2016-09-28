@@ -16,6 +16,7 @@ export default function handleActions(handlers: handlers, initialState: state) {
         let result = {};
         Object.keys(handlers).forEach(type => {
             let types = type.split(',');
+            types.pop();
             if (types.length > 1) {
                 types.forEach(disjoinedType => {
                     result[disjoinedType] = handlers[type];

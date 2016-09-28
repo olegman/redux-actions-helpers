@@ -16,5 +16,6 @@ export default function createAction(type: string, paramsCreator: paramsCreator 
         return Object.assign(paramsCreator(...args), { type });
     };
     actionCreator.toString = () => type;
+    actionCreator.valueOf = () => `${type},`;
     return actionCreator;
 }
