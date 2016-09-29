@@ -1,4 +1,5 @@
-const actionsRegistry = new Set();
+import actionsRegistry from './actionsRegistry';
+
 export interface params {
     type?: void;
     [propName: string]: any;
@@ -6,6 +7,7 @@ export interface params {
 export interface paramsCreator {
     (...any): params;
 }
+
 export default function createAction(type: string, paramsCreator: paramsCreator = () => ({})) {
     if (actionsRegistry.has(type)) {
         throw `Duplicate action ${type}`;
