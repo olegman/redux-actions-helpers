@@ -105,4 +105,4 @@ export default handleActions({
 <img src="https://s-media-cache-ak0.pinimg.com/originals/0d/30/b4/0d30b41543d97867ca502a8ac3b5afe0.gif" width="300">
 
 ## What about async actions?
-Use [redux-saga](https://github.com/yelouafi/redux-saga/) and be happy 
+Use [redux-saga](https://github.com/yelouafi/redux-saga/) and be happy 😉
