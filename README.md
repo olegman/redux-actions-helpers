@@ -65,6 +65,7 @@ export default function reducer(state = initialState, action = {}) {
     }
 }
 ```
+<img src="https://s-media-cache-ak0.pinimg.com/564x/5a/6c/22/5a6c2283a90edd21c8815cf3c80c924b.jpg" width="300">
 
 After:
 ```javascript
@@ -101,8 +102,7 @@ export default handleActions({
     }
 }, { initialState });
 ```
-
-![](http://3.bp.blogspot.com/-aoNafvmfjAs/UxiDQG-PORI/AAAAAAAACjY/-zUfz-j8bQ4/s1600/happy+sad.gif)
+<img src="https://s-media-cache-ak0.pinimg.com/originals/0d/30/b4/0d30b41543d97867ca502a8ac3b5afe0.gif" width="300">
 
 ## What about async actions?
-Use [redux-saga](https://github.com/yelouafi/redux-saga/) and be happy 😉
+Use [redux-saga](https://github.com/yelouafi/redux-saga/) and be happy 
