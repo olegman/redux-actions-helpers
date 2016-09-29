@@ -103,3 +103,6 @@ export default handleActions({
 ```
 
 ![](http://3.bp.blogspot.com/-aoNafvmfjAs/UxiDQG-PORI/AAAAAAAACjY/-zUfz-j8bQ4/s1600/happy+sad.gif)
+
+## What about async actions?
+Use [redux-saga](https://github.com/yelouafi/redux-saga/) and be happy 😉
