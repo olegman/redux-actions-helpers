@@ -6,11 +6,12 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/redux-actions-helpers.svg?style=flat-square)](https://www.npmjs.com/package/redux-actions-helpers)
 [![NPM Downloads](https://img.shields.io/npm/dt/redux-actions-helpers.svg?style=flat-square)](https://www.npmjs.com/package/redux-actions-helpers)
 
-This is tiny lib for reducing boilerplate when you create and handle new actions in your app. With the help of this lib
-you can create action in one single line and use it to dispatch actions and like constant with one single function.
+This is tiny lib for reducing boilerplate when you create and handle new actions in your redux app. With the help of this lib
+you can create action in one single line and use it to dispatch actions and like constant. Also this lib provide some helpful
+errors and warnings, to avoid common mistakes. You can see usage in example below.
 
 Before:
-``` 
+```javascript 
 // actions.js
 export const ACTION_WITHOUT_PARAMS = 'ACTION_WITHOUT_PARAMS';
 export function actionWithoutParams() {
@@ -28,8 +29,15 @@ export function actionWithParams(param1, param2) {
     }
 }
 
+export const ANOTHER_ACTION = 'ANOTHER_ACTION';
+export function actionWithParams() {
+    return {
+        type: ANOTHER_ACTION
+    }
+}
+
 // reducer.js
-import { ACTION_WITHOUT_PARAMS, ACTION_WITH_PARAMS } from 'actions.js';
+import { ACTION_WITHOUT_PARAMS, ACTION_WITH_PARAMS, ANOTHER_ACTION } from 'actions.js';
 
 const initialState = {
     param1: 'someValue',
@@ -40,8 +48,12 @@ export default function reducer(state = initialState, action = {}) {
     switch (action.type) {
         case ACTION_WITHOUT_PARAMS:
             // some cool stuff
-            return state;
+            return {
+                ...state,
+                withCoolStuff
+            };
         case ACTION_WITH_PARAMS:
+        case ANOTHER_ACTION:
             let { param1, param2 } = action; 
             return {
                 ...state,
@@ -55,15 +67,16 @@ export default function reducer(state = initialState, action = {}) {
 ```
 
 After:
-``` 
+```javascript
 // actions.js
 import { createAction } from 'redux-actions-helpers';
 export const actionWithoutParams = createAction('ACTION_WITHOUT_PARAMS');
 export const actionWithParams = createAction('ACTION_WITH_PARAMS', (param1, param2) => ({ param1, param2 }));
+export const anotherAction = createAction('ANOTHER_ACTION');
 
 // reducer.js
 import { handleActions } from 'redux-actions-helpers';
-import { actionWithoutParams, actionWithParams } from 'actions.js';
+import { actionWithoutParams, actionWithParams, anotherAction } from 'actions.js';
 
 const initialState = {
     param1: 'someValue',
@@ -73,9 +86,12 @@ const initialState = {
 export default handleActions({
     [actionWithoutParams]: (state, action) => {
         // some cool stuff
-        return state;
+        return {
+            ...state,
+            withCoolStuff
+        };
     },
-    [actionWithParams]: (state, action) => {
+    [actionWithParams + anotherAction]: (state, action) => {
         let { param1, param2 } = action; 
         return {
             ...state,
@@ -83,5 +99,5 @@ export default handleActions({
             param2
         };
     }
-}, initialState);
+}, { initialState });
 ```
