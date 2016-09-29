@@ -19,7 +19,7 @@ export interface options {
 }
 
 export default function handleActions(handlers: handlers, options: options) {
-    let { initialState } = options;
+    const { initialState } = options;
     if (!('strict' in options)) options.strict = true;
 
     const flattenHandlers = (handlers => {

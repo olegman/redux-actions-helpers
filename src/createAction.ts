@@ -1,7 +1,6 @@
 import actionsRegistry from './actionsRegistry';
 
 export interface params {
-    type?: void;
     [propName: string]: any;
 }
 export interface paramsCreator {
@@ -17,7 +16,7 @@ export default function createAction(type: string, paramsCreator: paramsCreator 
 
     const actionCreator = (...args) => {
         const params = paramsCreator(...args);
-        if (params.type !== undefined) {
+        if ('type' in params) {
             console.warn('Property type is reserved by action');
         }
         return Object.assign(params, { type });
