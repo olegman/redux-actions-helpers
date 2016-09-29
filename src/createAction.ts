@@ -1,5 +1,6 @@
 const actionsRegistry = new Set();
 export interface params {
+    type?: void;
     [propName: string]: any;
 }
 export interface paramsCreator {
@@ -13,7 +14,11 @@ export default function createAction(type: string, paramsCreator: paramsCreator 
     }
 
     const actionCreator = (...args) => {
-        return Object.assign(paramsCreator(...args), { type });
+        const params = paramsCreator(...args);
+        if (params.type !== undefined) {
+            console.warn('Property type is reserved by action');
+        }
+        return Object.assign(params, { type });
     };
     actionCreator.toString = () => type;
     actionCreator.valueOf = () => `${type},`;
