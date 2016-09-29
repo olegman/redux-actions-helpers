@@ -1,6 +1,7 @@
 ## 1.0.0 (September 29, 2016)
 ### Breaking changes
 - Second argument of handleActions is now accepts options object instead of initialState (defaultState), so you need to pass initialState in that object, like this { initialState } this was affected by [adding warning for unknown action](https://github.com/olegman/redux-actions-helpers/issues/12)
+
 ### Major changes
 - Added support for multiple actions in one handler, now you can combine actions by + operator, like so: [action + secondAction]: handlerFunction see details in [corresponding issue](https://github.com/olegman/redux-actions-helpers/issues/6) ([#8](https://github.com/olegman/redux-actions-helpers/pull/8))
 - Complete rewrite to TypeScript. Now it's easier to integrate in TypeScript projects and can be helpful with IDE suggestions, because we have d.ts files ([f620fcf](https://github.com/olegman/redux-actions-helpers/commit/f620fcfaf266d77a785e652a3718863ad7b7c7b4))
