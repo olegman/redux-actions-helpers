@@ -68,7 +68,7 @@ export default function reducer(state = initialState, action = {}) {
     }
 }
 ```
-<img src="https://s-media-cache-ak0.pinimg.com/564x/5a/6c/22/5a6c2283a90edd21c8815cf3c80c924b.jpg" width="300">
+<img src="https://s-media-cache-ak0.pinimg.com/564x/5a/6c/22/5a6c2283a90edd21c8815cf3c80c924b.jpg" width="300"><br>
 Too much code to write and maintain 😰
 
 After:
@@ -98,7 +98,7 @@ const initialState = {
 
 export default handleActions({
     /* yay we use one function to dispatch actions and like constant, looks nice
-    and under the hood it's just a constant so if we write 'ACTION_WITHOUT_PARAMS' this wil work too */
+    and under the hood it's just a constant so if we write 'ACTION_WITHOUT_PARAMS' this will work too */
     [actionWithoutParams]: (state, action) => {
         // some cool stuff
         return {
@@ -118,7 +118,7 @@ export default handleActions({
     }
 }, { initialState });
 ```
-<img src="https://s-media-cache-ak0.pinimg.com/originals/0d/30/b4/0d30b41543d97867ca502a8ac3b5afe0.gif" width="300">
+<img src="https://s-media-cache-ak0.pinimg.com/originals/0d/30/b4/0d30b41543d97867ca502a8ac3b5afe0.gif" width="300"><br>
 It's much better for now, looks nice and clean with much less code 😎
 
 ## What about async actions?
@@ -145,7 +145,7 @@ export default function* rootSaga() {
 }
 ```
 Everything looks nice instead of this string: fetch.toString(). The problem is that action can act like constant in some situation with no effort but it still a function and in some cases you need to force action to be a constant with type string. But I'm very kind and have one more thing for you, this is [redux-actions-helpers-saga](https://github.com/olegman/redux-actions-helpers-saga). For now this is only one small function that just an alias for redux-saga fork helper function, that do .toString transform under the hood, to keep code looks pretty and nice: 
-```
+```javascript
 import { fork } from 'redux-actions-helpers-saga';
 export default function* rootSaga() {
   yield fork(takeEvery, fetch, fetchData)
