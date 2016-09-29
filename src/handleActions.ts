@@ -15,11 +15,11 @@ export default function handleActions(handlers: handlers, initialState: state) {
     const flattenHandlers = (handlers => {
         let result = {};
         Object.keys(handlers).forEach(type => {
-            let types = type.split(',');
-            types.pop();
-            if (types.length > 1) {
-                types.forEach(disjoinedType => {
-                    result[disjoinedType] = handlers[type];
+            if (type.slice(-1) === ',') {
+                const multipleTypes = type.slice(0, -1);
+                const types = multipleTypes.split(',');
+                types.forEach(splittedType => {
+                    result[splittedType] = handlers[type];
                 })
             } else {
                 result[type] = handlers[type];
