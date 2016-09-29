@@ -101,3 +101,5 @@ export default handleActions({
     }
 }, { initialState });
 ```
+
+![](http://3.bp.blogspot.com/-aoNafvmfjAs/UxiDQG-PORI/AAAAAAAACjY/-zUfz-j8bQ4/s1600/happy+sad.gif)
