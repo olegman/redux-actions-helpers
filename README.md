@@ -6,7 +6,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/redux-actions-helpers.svg?style=flat-square)](https://www.npmjs.com/package/redux-actions-helpers)
 [![NPM Downloads](https://img.shields.io/npm/dt/redux-actions-helpers.svg?style=flat-square)](https://www.npmjs.com/package/redux-actions-helpers)
 
-Redux actions helpers is tiny TypeScript library which helps you create redux actions with less code and avoid common mistakes.
+Redux actions helpers helps you create redux actions with less code and avoid common mistakes. Jump to [QuickStart Guide](https://github.com/olegman/redux-actions-helpers#quickstart-guide) to see it in action.
 
 - **Simple:** it's only helpers for creating and handle actions from [official redux documentation](http://redux.js.org/docs/basics/Actions.html) nothing more, I don't try to invent some new way of creating and handle actions and that's why it easy to integrate in existing project and it can work nice with other tools and libs. 
 - **Small:** it's realy very small, without any extra dependencies and won't bloat your bundle size.
@@ -28,12 +28,12 @@ export function actionWithoutParams() {
     }
 }
 ```
-But now we could do it much better:
+But now we have [createAction](https://github.com/olegman/redux-actions-helpers#createactiontype-paramscreator) helper that could do it much better:
 ```javascript 
 import { createAction } from 'redux-actions-helpers';
 export const actionWithoutParams = createAction('ACTION_WITHOUT_PARAMS');
 ```
-Feel the difference only one single line to create action, and as you can see we moved away extra export of constant, because for now our action can act like constant too.
+Feel the difference only one single line to create action(it's **83,4%** less lines of code), and as you can see we moved away extra export of constant, because for now our action can act like constant too.
 
 And what about actions with params, previously we can do like this
 ```javascript
@@ -49,12 +49,9 @@ export function actionWithParams(param1, param2) {
 For now it can be easy as:
 ```javascript
 import { createAction } from 'redux-actions-helpers';
-export const actionWithParams = createAction('ACTION_WITH_PARAMS', (param1, param2) => ({ 
-    param1, 
-    param2 
-}));
+export const actionWithParams = createAction('ACTION_WITH_PARAMS', (param1, param2) => ({ param1, param2 }));
 ```
-Ok, looks good now let's move on in our reducer and look how can we get benefit from our new and shiny actions
+Ok, looks good now let's move on in our reducer and look how can we get benefit from our new and shiny actions. And here we have another helper method [handleActions](https://github.com/olegman/redux-actions-helpers#handleactionshandlers-options):
 ```javascript
 import { handleActions } from 'redux-actions-helpers';
 import { actionWithoutParams, actionWithParams, anotherAction } from 'actions.js';
@@ -65,8 +62,8 @@ const initialState = {
 };
 
 export default handleActions({
-    /* yay we use one function to dispatch actions and like constant, looks nice
-    and under the hood it's just a constant so if we write 'ACTION_WITHOUT_PARAMS' this will work too */
+    /* yay we use one function to dispatch actions and like constant, looks nice.
+    Under the hood it's just a constant so if we write 'ACTION_WITHOUT_PARAMS' this will work too */
     [actionWithoutParams]: (state, action) => {
         // some cool stuff
         return {
@@ -74,8 +71,8 @@ export default handleActions({
             withCoolStuff
         };
     },
-    /* 💥 killer feature: multiple actions on one handler with very nice and short syntax,
-    but nothing magical under the hood it's just constants with ',' delimeter */
+    /* 💥 killer feature: multiple actions on one handler with very nice and short syntax.
+    But nothing magical under the hood it's just constants with ',' delimeter */
     [actionWithParams + anotherAction]: (state, action) => {
         let { param1, param2 } = action; 
         return {
@@ -120,9 +117,6 @@ export default function* rootSaga() {
 ```
 Yep, much better 👏
 
-## Conclusion
-I know there are many similar libs that try to solve same problem, for example: [redux-actions](https://github.com/acdlite/redux-actions), [redux-act](https://github.com/pauldijou/redux-act) and many more. But in fact it's not true, because they try to solve many problems at once and looks too complicated with many unnecessary things for me (that bloat my final bundle size 😱), moreover they don't have some useful things that my library can do. My library do small things but do it very good, it's realy save your time, help with useful errors and warnings, and have low cost to integrate in existing solution and even can reduce your final bundle size (if you have many actions in project). Hope you enjoy it, as I do ✌️
-
 ## API Reference
 
 ###`createAction(type, paramsCreator)`
@@ -141,3 +135,6 @@ Available options:
 - `Error: Duplicate Action`: your type property in action must be unique to avoid some unexpected behaviour, and if you have such mistake you will get an error to fix this. If you have many actions in many places(components) the best practice to avoid this error is naming action with namespace like so: `@@namespace/OUR_CONSTANT`
 - `Warning: Property type is reserved by action`: means that you create params with type property, but action already resrved this property to itself and won't be overriden. So you need to rename this property to different name.
 - `Warning: Unknown action`: this warning can produce `handleActions` function when you pass in some unknown action type.
+
+## Conclusion
+I know there are many similar libs that try to solve same problem, for example: [redux-actions](https://github.com/acdlite/redux-actions), [redux-act](https://github.com/pauldijou/redux-act) and many more. But in fact it's not true, because they try to solve many problems at once and looks too complicated with many unnecessary things for me (that bloat my final bundle size 😱), moreover they don't have some useful things that my library can do. My library do small things but do it very good, it's realy save your time, help with useful errors and warnings, and have low cost to integrate in existing solution and even can reduce your final bundle size (if you have many actions in project). Hope you enjoy it, as I do ✌️
