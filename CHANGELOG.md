@@ -1,3 +1,7 @@
+## 1.0.1 (October 3, 2016)
+### Bugfixes
+- Remove typings from postinstall ([657ee3c](https://github.com/olegman/redux-actions-helpers/commit/657ee3cbbb53f8ad807c90752a71c3f354450eac))
+
 ## 1.0.0 (September 29, 2016)
 ### Breaking changes
 - Second argument of handleActions is now accepts options object instead of initialState (defaultState), so you need to pass initialState in that object, like this { initialState } this was affected by [adding warning for unknown action](https://github.com/olegman/redux-actions-helpers/issues/12)
