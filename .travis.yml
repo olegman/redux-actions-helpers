@@ -8,6 +8,7 @@ cache:
     - node_modules
 
 script:
+  - typings install
   - npm run transpile
 
 deploy:

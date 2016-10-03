@@ -17,7 +17,6 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "postinstall": "typings install",
     "clean": "rm -rf lib",
     "watch": "npm run clean && tsc -p . --watch",
     "transpile": "npm run clean && tsc -p ."
