@@ -110,9 +110,9 @@ export default function* rootSaga() {
 ```
 Everything looks nice instead of this string: fetch.toString(). The problem is that action can act like constant in some situation with no effort but it still a function and in some cases you need to force action to be a constant with type string. But I'm very kind and have one more thing for you, this is [redux-actions-helpers-saga](https://github.com/olegman/redux-actions-helpers-saga). For now this is only one small function that just an alias for redux-saga fork helper function, that do .toString transform under the hood, to keep code looks pretty and nice: 
 ```javascript
-import { fork } from 'redux-actions-helpers-saga';
+import { forkActionWatcher } from 'redux-actions-helpers-saga';
 export default function* rootSaga() {
-  yield fork(takeEvery, fetch, fetchData)
+  yield forkActionWatcher(takeEvery, fetch, fetchData)
 }
 ```
 Yep, much better 👏
