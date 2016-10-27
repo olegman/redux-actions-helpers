@@ -7,7 +7,7 @@ export interface paramsCreator {
     (...any): params;
 }
 
-export default function createAction(type: string, paramsCreator: paramsCreator = () => ({})) {
+export default function createAction(type: string, paramsCreator: paramsCreator = () => ({})): any {
     if (actionsRegistry.has(type)) {
         throw `Duplicate action ${type}`;
     } else {
