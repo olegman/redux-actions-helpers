@@ -1,6 +1,7 @@
 ## 1.0.2 (October 27, 2016)
 ### Minor changes
 - Added yarn lock file ([c92892f](https://github.com/olegman/redux-actions-helpers/commit/c92892fb1f4d33f983d56bea8b3fa08eb32eed99))
+
 ### Bugfixes
 - Computed property of object must be stirng, number or any ([b308916](https://github.com/olegman/redux-actions-helpers/commit/b3089165696bc2e80c22ae5decfedfe4ea451c55))
 
