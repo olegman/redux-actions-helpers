@@ -9,7 +9,7 @@
 Redux actions helpers helps you create redux actions with less code and avoid common mistakes. Jump to [QuickStart Guide](https://github.com/olegman/redux-actions-helpers#quickstart-guide) to see it in action.
 
 - **Simple:** it's only helpers for creating and handle actions from [official redux documentation](http://redux.js.org/docs/basics/Actions.html) nothing more, I don't try to invent some new way of creating and handle actions and that's why it easy to integrate in existing project and it can work nice with other tools and libs. 
-- **Small:** it's realy very small, without any extra dependencies and won't bloat your bundle size.
+- **Small:** it's really very small, without any extra dependencies and won't bloat your bundle size.
 - **Productive:** the main goal of this lib to keep you more productive, you will write much less code and do more, also you have to do much less job when you do some refactorings and it provide some very helpful errors and warnings to avoid common mistakes and save your time on debugging.
 
 ## Installation
@@ -137,4 +137,4 @@ Available options:
 - `Warning: Unknown action`: this warning can produce `handleActions` function when you pass in some unknown action type.
 
 ## Conclusion
-I know there are many similar libs that try to solve same problem, for example: [redux-actions](https://github.com/acdlite/redux-actions), [redux-act](https://github.com/pauldijou/redux-act) and many more. But in fact it's not true, because they try to solve many problems at once and looks too complicated with many unnecessary things for me (that bloat my final bundle size 😱), moreover they don't have some useful things that my library can do. My library do small things but do it very good, it's realy save your time, help with useful errors and warnings, and have low cost to integrate in existing solution and even can reduce your final bundle size (if you have many actions in project). Hope you enjoy it, as I do ✌️
+I know there are many similar libs that try to solve same problem, for example: [redux-actions](https://github.com/acdlite/redux-actions), [redux-act](https://github.com/pauldijou/redux-act) and many more. But in fact it's not true, because they try to solve many problems at once and looks too complicated with many unnecessary things for me (that bloat my final bundle size 😱), moreover they don't have some useful things that my library can do. My library do small things but do it very good, it's really save your time, help with useful errors and warnings, and have low cost to integrate in existing solution and even can reduce your final bundle size (if you have many actions in project). Hope you enjoy it, as I do ✌️
