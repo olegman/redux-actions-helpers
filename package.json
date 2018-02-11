@@ -22,7 +22,6 @@
     "transpile": "npm run clean && tsc -p ."
   },
   "devDependencies": {
-    "typescript": "^2.0.3",
-    "typings": "^1.4.0"
+    "typescript": "^2.0.3"
   }
 }
