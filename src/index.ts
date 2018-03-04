@@ -1,4 +1,4 @@
-import createAction from './createAction';
+import createAction, { clearRegistry } from './createAction';
 import handleActions from './handleActions';
 
-export { createAction, handleActions };
+export { createAction, handleActions, clearRegistry };
