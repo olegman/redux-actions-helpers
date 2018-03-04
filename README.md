@@ -8,7 +8,7 @@
 
 Redux actions helpers helps you create redux actions with less code and avoid common mistakes. Jump to [QuickStart Guide](https://github.com/olegman/redux-actions-helpers#quickstart-guide) to see it in action.
 
-- **Simple:** it's only helpers for creating and handle actions from [official redux documentation](http://redux.js.org/docs/basics/Actions.html) nothing more, I don't try to invent some new way of creating and handle actions and that's why it easy to integrate in existing project and it can work nice with other tools and libs. 
+- **Simple:** it's only helpers for creating and handle actions from [official redux documentation](http://redux.js.org/docs/basics/Actions.html) nothing more, I don't try to invent some new way of creating and handle actions and that's why it easy to integrate in existing project and it can work nice with other tools and libs.
 - **Small:** it's really very small, without any extra dependencies and won't bloat your bundle size.
 - **Productive:** the main goal of this lib to keep you more productive, you will write much less code and do more, also you have to do much less job when you do some refactorings and it provide some very helpful errors and warnings to avoid common mistakes and save your time on debugging.
 
@@ -20,7 +20,7 @@ npm install --save redux-actions-helpers
 
 ## QuickStart Guide
 Let's create an action first, in good old days it can look like this:
-```javascript 
+```javascript
 export const ACTION_WITHOUT_PARAMS = 'ACTION_WITHOUT_PARAMS';
 export function actionWithoutParams() {
     return {
@@ -29,7 +29,7 @@ export function actionWithoutParams() {
 }
 ```
 But now we have [createAction](https://github.com/olegman/redux-actions-helpers#createactiontype-paramscreator) helper that could do it much better:
-```javascript 
+```javascript
 import { createAction } from 'redux-actions-helpers';
 export const actionWithoutParams = createAction('ACTION_WITHOUT_PARAMS');
 ```
@@ -74,7 +74,7 @@ export default handleActions({
     /* 💥 killer feature: multiple actions on one handler with very nice and short syntax.
     But nothing magical under the hood it's just constants with ',' delimeter */
     [actionWithParams + anotherAction]: (state, action) => {
-        let { param1, param2 } = action; 
+        let { param1, param2 } = action;
         return {
             ...state,
             param1,
@@ -108,7 +108,7 @@ export default function* rootSaga() {
   yield fork(takeEvery, fetch.toString(), fetchData)
 }
 ```
-Everything looks nice instead of this string: fetch.toString(). The problem is that action can act like constant in some situation with no effort but it still a function and in some cases you need to force action to be a constant with type string. But I'm very kind and have one more thing for you, this is [redux-actions-helpers-saga](https://github.com/olegman/redux-actions-helpers-saga). For now this is only one small function that just an alias for redux-saga fork helper function, that do .toString transform under the hood, to keep code looks pretty and nice: 
+Everything looks nice instead of this string: fetch.toString(). The problem is that action can act like constant in some situation with no effort but it still a function and in some cases you need to force action to be a constant with type string. But I'm very kind and have one more thing for you, this is [redux-actions-helpers-saga](https://github.com/olegman/redux-actions-helpers-saga). For now this is only one small function that just an alias for redux-saga fork helper function, that do .toString transform under the hood, to keep code looks pretty and nice:
 ```javascript
 import { forkActionWatcher } from 'redux-actions-helpers-saga';
 export default function* rootSaga() {
@@ -130,6 +130,8 @@ Yep, much better 👏
 Available options:
 - `initialState`: `required` option that must provide your initialState (defaultState) state of reducer.
 - `strict`: default value is `true`, enables strict mode with all available warnings.
+
+###`clearRegistry()`
 
 ## Errors and warnings Reference
 - `Error: Duplicate Action`: your type property in action must be unique to avoid some unexpected behaviour, and if you have such mistake you will get an error to fix this. If you have many actions in many places(components) the best practice to avoid this error is naming action with namespace like so: `@@namespace/OUR_CONSTANT`

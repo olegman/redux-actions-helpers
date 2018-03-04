@@ -1,7 +1,7 @@
 {
   "name": "redux-actions-helpers",
   "description": "Small helpers functions for creating and handle redux actions",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": {
     "name": "Oleg Martynov",
     "email": "olegman.ru@gmail.com"

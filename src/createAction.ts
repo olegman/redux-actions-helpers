@@ -7,6 +7,10 @@ export interface paramsCreator {
     (...any): params;
 }
 
+export function clearRegistry() : any {
+    actionsRegistry.clear();
+}
+
 export default function createAction(type: string, paramsCreator: paramsCreator = () => ({})): any {
     if (actionsRegistry.has(type)) {
         throw `Duplicate action ${type}`;
