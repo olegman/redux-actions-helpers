@@ -4,7 +4,7 @@ export interface state {
     [propName: string]: any;
 }
 export interface handler {
-    (state: state, action: action): state;
+    (state: any, action: action): state;
 }
 export interface handlers {
     [propName: string]: handler
