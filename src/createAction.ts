@@ -11,7 +11,9 @@ export function clearRegistry() : any {
     actionsRegistry.clear();
 }
 
-export default function createAction(type: string, paramsCreator: paramsCreator = () => ({})): any {
+const defaultTransform = (...args) => ({ ...args });
+
+export default function createAction(type: string, transform = defaultTransform): any {
     if (actionsRegistry.has(type)) {
         throw `Duplicate action ${type}`;
     } else {
@@ -19,7 +21,7 @@ export default function createAction(type: string, paramsCreator: paramsCreator 
     }
 
     const actionCreator = (...args) => {
-        const params = paramsCreator(...args);
+        const params = transform(...args);
         if ('type' in params) {
             console.warn('Property type is reserved by action');
         }
