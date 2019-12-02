@@ -13,11 +13,21 @@ export function clearRegistry() : any {
 
 const defaultTransform = (...args) => ({ ...args });
 
+const validateType = (type: string): boolean => {
+    const re = /^@@[a-z0-9]+\/[A-Z_0-9]+$/;
+    
+    return re.test(type);
+};
+
 export default function createAction(type: string, transform = defaultTransform): any {
     if (actionsRegistry.has(type)) {
         throw `Duplicate action ${type}`;
     } else {
         actionsRegistry.add(type);
+    }
+
+    if (!validateType(type)) {
+        console.warn(`Action type: ${type} doesn't match regexp pattern /^@@[a-z0-9]+\/[A-Z_0-9]+$/`);
     }
 
     const actionCreator = (...args) => {
