@@ -14,8 +14,8 @@ export function clearRegistry() : any {
 const defaultTransform = (...args) => ({ ...args });
 
 const validateType = (type: string): boolean => {
-    const re = /^@@[a-z0-9]+\/[A-Z_0-9]+$/;
-    
+    const re = /^@@([a-z0-9]+(?:\-?[a-z0-9]+))+\/([A-Z0-9]+(?:\_?[A-Z0-9]+))+$/;
+
     return re.test(type);
 };
 
@@ -27,7 +27,7 @@ export default function createAction(type: string, transform = defaultTransform)
     }
 
     if (!validateType(type)) {
-        console.warn(`Action type: ${type} doesn't match regexp pattern /^@@[a-z0-9]+\/[A-Z_0-9]+$/`);
+        console.warn(`Action type: ${type} doesn't match regexp pattern /^@@([a-z0-9]+(?:\\-?[a-z0-9]+))+\\/([A-Z0-9]+(?:\\_?[A-Z0-9]+))+$/`);
     }
 
     const actionCreator = (...args) => {
